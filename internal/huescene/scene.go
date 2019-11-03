@@ -46,10 +46,10 @@ func setLightScene(l huego.Light, scfg SceneConfig) error {
 
 	power := lightPower(scfg, *lcfg)
 	if power != nil {
-		// It's supposed to be off. Just turn it off.
 		if *power {
 			l.On()
 		} else {
+			// It's supposed to be off. Just turn it off.
 			l.Off()
 			return nil
 		}
@@ -124,10 +124,10 @@ func lightPower(scfg SceneConfig, lcfg SceneLightConfig) *bool {
 	var result bool
 	if lcfg.Power.IsSet {
 		result = lcfg.Power.Value
-	} else if scfg.Power.IsSet {
-		result = scfg.Power.Value
 	} else if lcfg.Color != "" || lcfg.Brightness > 0 {
 		result = true
+	} else if scfg.Power.IsSet {
+		result = scfg.Power.Value
 	} else if scfg.Color != "" || scfg.Brightness > 0 {
 		result = true
 	}

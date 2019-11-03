@@ -1,8 +1,14 @@
+colors:
+- &red "#f00"
+- &indigo "#4b0082"
+- &indigodye "#0D4F8B"
+- &orange "#FF7F50"
+- &pale "#fab444"
 scenes:
 -
   &warning
   name: warning
-  color: "#FF7F50"
+  color: *orange
   brightness: 255
   lights:
   - name: Bruce's Desk
@@ -14,7 +20,7 @@ scenes:
 -
   &active
   name: active
-  color: "#f00"
+  color: *red
   lights:
   - name: Bruce's Desk
     brightness: 200
@@ -23,7 +29,7 @@ scenes:
   - name: Stairs
     brightness: 50
   - name: Parlor Overhead
-    color: "#fab444"
+    color: *orange
     brightness: 255
   - name: TV
     brightness: 50
@@ -40,10 +46,10 @@ scenes:
   - name: Bruce's Desk
     brightness: 50
 - name: work
-  color: "#fab444"
+  color: *pale
   lights:
   - name: Bruce's Desk
-    color: "#4b0082"
+    color: *indigo
     brightness: 255
   - name: Stairs Floor
     brightness: 50
@@ -52,7 +58,7 @@ scenes:
   - name: Parlor Overhead
     brightness: 255
 - name: tv
-  color: "#fab444"
+  color: *pale
   lights:
     - name: Bed
       power: false
@@ -68,5 +74,9 @@ scenes:
     - name: Nightstand
     - name: Parlor Overhead
     - name: Stairs
+      color: *indigodye
+      brightness: 20
     - name: Stairs Floor
+      color: *indigo
+      brightness: 50
     - name: TV
