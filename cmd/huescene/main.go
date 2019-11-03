@@ -14,10 +14,12 @@ import (
 
 var configpath string
 var docmdlistlights bool
+var userkey string
 
 func main() {
 	flag.StringVar(&configpath, "config", "", "Path to the huescene YAML configuration")
 	flag.StringVar(&configpath, "c", "", "Path to the huescene YAML configuration")
+	flag.StringVar(&userkey, "key", "", "Hue Bridge user key")
 	flag.BoolVar(&docmdlistlights, "list-lights", false, "List the names of the available lights")
 	flag.Parse()
 
@@ -35,10 +37,11 @@ func main() {
 		log.Panic(err)
 	}
 
-	if cfg.Key == "" {
+	key := findKey(*cfg)
+	if key == "" {
 		cmdCreateUser(*bridge, *cfg)
 	} else {
-		authd := huego.New(bridge.Host, cfg.Key)
+		authd := huego.New(bridge.Host, key)
 		if docmdlistlights {
 			cmdListLights(*authd, *cfg)
 		} else {
@@ -77,4 +80,13 @@ func cmdSetScene(bridge huego.Bridge, cfg huescene.Config) {
 		log.Println("An error occurred.")
 		log.Fatal(err)
 	}
+}
+
+func findKey(cfg huescene.Config) string {
+	if cfg.Key != "" {
+		return cfg.Key
+	} else if userkey != "" {
+		return userkey
+	}
+	return ""
 }
