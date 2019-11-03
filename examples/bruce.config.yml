@@ -1,0 +1,72 @@
+scenes:
+-
+  &warning
+  name: warning
+  color: "#FF7F50"
+  brightness: 255
+  lights:
+  - name: Bruce's Desk
+  - name: Stairs Floor
+  - name: Stairs
+  - name: Parlor Overhead
+  - name: TV
+    brightness: 50
+-
+  &active
+  name: active
+  color: "#f00"
+  lights:
+  - name: Bruce's Desk
+    brightness: 200
+  - name: Stairs Floor
+    brightness: 255
+  - name: Stairs
+    brightness: 50
+  - name: Parlor Overhead
+    color: "#fab444"
+    brightness: 255
+  - name: TV
+    brightness: 50
+-
+  <<: *active
+  name: active-away
+  lights:
+  - name: Bruce's Desk
+    brightness: 50
+-
+  <<: *warning
+  name: warning-away
+  lights:
+  - name: Bruce's Desk
+    brightness: 50
+- name: work
+  color: "#fab444"
+  lights:
+  - name: Bruce's Desk
+    color: "#4b0082"
+    brightness: 255
+  - name: Stairs Floor
+    brightness: 50
+  - name: Stairs
+    brightness: 50
+  - name: Parlor Overhead
+    brightness: 255
+- name: tv
+  color: "#fab444"
+  lights:
+    - name: Bed
+      power: false
+    - name: Nightstand
+      brightness: 50
+    - name: TV
+      brightness: 50
+- name: bedtime
+  power: false
+  lights:
+    - name: Bed
+    - name: Bruce's Desk
+    - name: Nightstand
+    - name: Parlor Overhead
+    - name: Stairs
+    - name: Stairs Floor
+    - name: TV
