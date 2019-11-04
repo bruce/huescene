@@ -1,6 +1,8 @@
 # huescene
 
-Define and orchestrate Philips Hue scenes from the commandline.
+For use with Philips Hue lights.
+
+Define and orchestrate lighting scenes from the commandline.
 
 ## Installing it
 
