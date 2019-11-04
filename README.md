@@ -18,14 +18,14 @@ Here's a simple example:
 
 ```yaml
 scenes:
-  - name: working
-    lights:
-      - name: Office
-        color: "#fab444"
-        brightness: 255
-      - name: Desk
-        color: "#fff"
-        brightness: 200
+- name: working
+  lights:
+  - name: Office
+    color: "#fab444"
+    brightness: 255
+  - name: Desk
+    color: "#fff"
+    brightness: 200
 ```
 
 More examples can be found in the [`examples/`](examples) directory.
@@ -38,7 +38,7 @@ Scene configurations have a `name` and, optionally, the following fields that ac
 
 - `power` - `true` or `false`
 - `color` - A hexidecimal color string, e.g., `#fab444`
-- `brightness` - 0–255
+- `brightness` - `0`–`255`
 
 A scene's lights are defines as a list under its `lights` key.
 
