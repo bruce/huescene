@@ -15,26 +15,33 @@ import (
 var configpath string
 var docmdlistlights bool
 var userkey string
+var docmdcheckconfig bool
 
 func main() {
 	flag.StringVar(&configpath, "config", "", "Path to the huescene YAML configuration")
 	flag.StringVar(&configpath, "c", "", "Path to the huescene YAML configuration")
 	flag.StringVar(&userkey, "key", "", "Hue Bridge user key")
+	flag.BoolVar(&docmdcheckconfig, "check-config", false, "Check YAML configuration")
 	flag.BoolVar(&docmdlistlights, "list-lights", false, "List the names of the available lights")
 	flag.Parse()
-
-	if configpath == "" {
-		log.Fatal("No --config path given")
-	}
 
 	bridge, err := huego.Discover()
 	if err != nil {
 		log.Panic(err)
 	}
 
-	cfg, err := huescene.ReadConfig(configpath)
+	var cfg *huescene.Config
+	if configpath == "" {
+		cfg, err = huescene.ReadConfigFromStdin()
+	} else {
+		cfg, err = huescene.ReadConfig(configpath)
+	}
 	if err != nil {
 		log.Panic(err)
+	}
+
+	if docmdcheckconfig {
+		cmdCheckConfig(*cfg)
 	}
 
 	key := findKey(*cfg)
@@ -48,6 +55,11 @@ func main() {
 			cmdSetScene(*authd, *cfg)
 		}
 	}
+}
+
+func cmdCheckConfig(cfg huescene.Config) {
+	huescene.PrintConfig(cfg)
+	os.Exit(0)
 }
 
 func cmdListLights(bridge huego.Bridge, cfg huescene.Config) {

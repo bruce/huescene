@@ -1,0 +1,9 @@
+scenes:
+- name: working
+  lights:
+   - name: Office
+     color: "#fab444"
+     brightness: 255
+   - name: Desk
+     color: "#fff"
+     brightness: 200

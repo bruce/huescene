@@ -1,0 +1,81 @@
+# colors are here just for &anchors that
+# can be used in references and are not part
+# of the standard configuration.
+colors:
+- &red "#f00"
+- &indigo "#4b0082"
+- &darkindigo "#0D4F8B"
+- &orange "#FF7F50"
+- &pale "#fab444"
+scenes:
+- name: work
+  color: *pale
+  lights:
+  - name: Bruce's Desk
+    color: *indigo
+    brightness: 255
+  - name: Stairs Floor
+    brightness: 50
+  - name: Stairs
+    brightness: 50
+  - name: Parlor Overhead
+    brightness: 255
+- &meeting-soon
+  name: meeting-soon
+  color: *orange
+  brightness: 255
+  lights:
+  - name: Bruce's Desk
+  - name: Stairs Floor
+  - name: Stairs
+  - name: Parlor Overhead
+  - name: TV
+    brightness: 50
+- &meeting
+  name: meeting
+  color: *red
+  lights:
+  - name: Bruce's Desk
+    brightness: 200
+  - name: Stairs Floor
+    brightness: 255
+  - name: Stairs
+    brightness: 50
+  - name: Parlor Overhead
+    color: *orange
+    brightness: 255
+  - name: TV
+    brightness: 50
+- <<: *meeting
+  name: meeting-away
+  lights:
+  - name: Bruce's Desk
+    brightness: 50
+- <<: *meeting-soon
+  name: meeting-soon-away
+  lights:
+  - name: Bruce's Desk
+    brightness: 50
+- name: tv
+  color: *pale
+  lights:
+  - name: Bed
+    power: false
+  - name: Nightstand
+    brightness: 50
+  - name: TV
+    brightness: 50
+- name: bedtime
+  power: false
+  lights:
+  - name: Bed
+  - name: Bruce's Desk
+  - name: Nightstand
+  - name: Parlor Overhead
+  - name: Stairs
+    color: *darkindigo
+    brightness: 20
+  - name: Stairs Floor
+    color: *indigo
+    brightness: 50
+  - name: TV
