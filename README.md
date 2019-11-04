@@ -54,7 +54,7 @@ All commands must be run from within the same network as your Philips Hue Bridge
 
 Huescene _currently_ automatically attempts to create a username (API key) using your Hue Bridge if a key isn't already provided.
 
-At the moment, the workflow is a but clumsy :sob: and looks like this:
+At the moment, the workflow is a _bit_ clumsy :sob: and looks like this:
 
 1. You try one of the commands below, but you don't provide a key. It fails with a noisy `"link button not pressed"` error.
 2. You press the Hue Bridge link button and (within 30 seconds, reattempt the command). Now (instead of the command you really want to run) you get the API key output. A somewhat qualified success!
